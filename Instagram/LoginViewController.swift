@@ -16,9 +16,17 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
         // Do any additional setup after loading the view.
     }
+    override func viewDidAppear(_ animated: Bool) {
+        if PFUser.current() != nil {
+            print(PFUser.current()?.username)
+            self.performSegue(withIdentifier: "loginSegue", sender: nil)
+            
+        }    }
     
     @IBAction func onSignIn(_ sender: Any) {
         let username = usernameField.text!
